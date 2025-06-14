@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: code-present
+  datasource:
+    url: jdbc:postgresql://localhost:5432/code_present
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
