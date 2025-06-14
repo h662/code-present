@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,5 +17,4 @@ public class SeriesResponse {
     private String description;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private List<SlideSummary> slides;
 }
