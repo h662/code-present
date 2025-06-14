@@ -31,7 +31,7 @@ public class Page {
     private PageType pageType;
 
     @Column(columnDefinition = "TEXT")
-    private String contentText;
+    private String text;
 
     private String imageUrl;
 

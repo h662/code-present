@@ -2,16 +2,16 @@ package com.example.codepresent.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SlideRequest {
+public class SlideSummary {
+    private Long id;
+
     private String slideTitle;
-    private List<PageRequest> pages;
-    private Long seriesId;
+
     private Integer seriesOrder;
 }
+

@@ -11,6 +11,6 @@ import lombok.*;
 public class PageRequest {
     private int pageNumber;
     private PageType pageType;
-    private String contentText;
+    private String text;
     private String imageUrl;
 }

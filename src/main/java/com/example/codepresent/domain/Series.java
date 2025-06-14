@@ -10,34 +10,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name= "slides")
+@Table(name = "series")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Slide {
+public class Series {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String slideTitle;
+    private String title;
+
+    private String description;
 
     @OneToMany(
-            mappedBy = "slide",
+            mappedBy = "series",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     @Builder.Default
-    private List<Page> pages = new ArrayList<>();
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "series_id")
-    private Series series;
-
-    @Column(name = "series_order")
-    private Integer seriesOrder;
+    private List<Slide> slides = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime createdAt;

@@ -12,7 +12,6 @@ import java.util.List;
 @Builder
 public class SlideResponse {
     private Long id;
-    private Long slideCode;
     private String slideTitle;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
