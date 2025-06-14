@@ -5,6 +5,7 @@ public enum PageType {
     TOC,
     TEXT_ONLY,
     IMAGE_ONLY,
+    IMAGE_TEXT,
     TABLE_ONLY,
     TABLE_IMAGE,
     TABLE_TEXT,
