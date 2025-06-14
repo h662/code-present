@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -63,6 +64,21 @@ public class SlideServiceImpl implements SlideService {
         saved.setPages(pages);
 
         return toResponse(saved);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public SlideResponse getSlide(Long id) {
+        Slide slide = slideRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Slide not found: " + id));
+
+        return toResponse(slide);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<SlideResponse> getAllSlides() {
+        return slideRepository.findAll().stream().map(this::toResponse).collect(Collectors.toList());
     }
 
     private SlideResponse toResponse(Slide slide) {
