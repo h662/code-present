@@ -2,15 +2,14 @@ package com.example.codepresent.controller;
 
 import com.example.codepresent.dto.SeriesRequest;
 import com.example.codepresent.dto.SeriesResponse;
-import com.example.codepresent.dto.SlideRequest;
-import com.example.codepresent.dto.SlideResponse;
 import com.example.codepresent.service.SeriesService;
-import com.example.codepresent.service.SlideService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/series")
@@ -33,5 +32,15 @@ public class SeriesController {
         SeriesResponse response = seriesService.createSeries(request);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SeriesResponse> getSeries(@PathVariable Long id) {
+        return ResponseEntity.ok(seriesService.getSeries(id));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<SeriesResponse>> getAllSeries() {
+        return ResponseEntity.ok(seriesService.getAllSeries());
     }
 }
