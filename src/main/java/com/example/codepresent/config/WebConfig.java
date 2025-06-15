@@ -14,7 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
                         "http://localhost:5173",
                         "https://redundant-nanny-h662-43ed6282.koyeb.app",
                         "https://code-present-react.vercel.app/",
-                        "https://codepresent.app/"
+                        "https://codepresent.com/"
                 )
                 .allowedMethods("*")
                 .allowedHeaders("*")
