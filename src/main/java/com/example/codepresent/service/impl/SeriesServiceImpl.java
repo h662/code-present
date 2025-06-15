@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +35,7 @@ public class SeriesServiceImpl implements SeriesService {
 
     @Override
     @Transactional(readOnly = true)
-    public SeriesResponse getSeries(Long id) {
+    public SeriesResponse getSeries(UUID id) {
         Series series = seriesRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Series not found: " + id));
 

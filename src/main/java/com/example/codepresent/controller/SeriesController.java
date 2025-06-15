@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/series")
@@ -35,7 +36,7 @@ public class SeriesController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SeriesResponse> getSeries(@PathVariable Long id) {
+    public ResponseEntity<SeriesResponse> getSeries(@PathVariable UUID id) {
         return ResponseEntity.ok(seriesService.getSeries(id));
     }
 

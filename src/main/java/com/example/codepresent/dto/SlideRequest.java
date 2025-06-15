@@ -3,6 +3,7 @@ package com.example.codepresent.dto;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -12,6 +13,6 @@ import java.util.List;
 public class SlideRequest {
     private String slideTitle;
     private List<PageRequest> pages;
-    private Long seriesId;
+    private UUID seriesId;
     private Integer seriesOrder;
 }

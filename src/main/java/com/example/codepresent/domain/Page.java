@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "pages")
@@ -16,8 +18,9 @@ import java.time.LocalDateTime;
 @Builder
 public class Page {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "UUID")
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "slide_id", nullable = false)
@@ -30,8 +33,25 @@ public class Page {
     @Column(nullable = false)
     private PageType pageType;
 
+    @Column(length = 200)
+    private String title;
+
     @Column(columnDefinition = "TEXT")
-    private String text;
+    private String description;
+
+    @Column(columnDefinition = "TEXT")
+    private String code;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+            name = "options",
+            joinColumns = @JoinColumn(name = "page_id")
+    )
+    @Column(columnDefinition = "TEXT")
+    private List<String> options;
+
+    @Column(length = 200)
+    private String answer;
 
     private String imageUrl;
 

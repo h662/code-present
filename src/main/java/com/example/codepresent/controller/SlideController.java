@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/slides")
 @RequiredArgsConstructor
@@ -33,7 +35,7 @@ public class SlideController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SlideResponse> getSlide(@PathVariable Long id) {
+    public ResponseEntity<SlideResponse> getSlide(@PathVariable UUID id) {
         return ResponseEntity.ok(slideService.getSlide(id));
     }
 }
