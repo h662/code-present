@@ -38,4 +38,17 @@ public class SlideController {
     public ResponseEntity<SlideResponse> getSlide(@PathVariable UUID id) {
         return ResponseEntity.ok(slideService.getSlide(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSlide(
+            @RequestHeader("X-ADMIN-PASSWORD") String password,
+            @PathVariable UUID id
+    ) {
+        if (!adminPassword.equals(password)) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        slideService.deleteSlide(id);
+        return ResponseEntity.noContent().build();  // 204 No Content
+    }
 }

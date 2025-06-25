@@ -94,7 +94,7 @@ public class SlideServiceImpl implements SlideService {
                         .code(p.getCode())
                         .options(p.getOptions())
                         .answer(p.getAnswer())
-                        .imageUrl(s3Util.generatePresignedUrl(p.getImageUrl(), Duration.ofMinutes(30)))
+                        .imageUrl(s3Util.generatePresignedUrl(p.getImageUrl(), Duration.ofHours(2)))
                         .build()
                 ).toList();
 
@@ -105,5 +105,13 @@ public class SlideServiceImpl implements SlideService {
                 .updatedAt(slide.getUpdatedAt())
                 .pages(pageResponses)
                 .build();
+    }
+
+    @Override
+    public void deleteSlide(UUID slideId) {
+        slideRepository.findById(slideId)
+                .orElseThrow(() -> new IllegalArgumentException("Slide not found: " + slideId));
+
+        slideRepository.deleteById(slideId);
     }
 }

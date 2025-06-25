@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface SlideService {
     SlideResponse createSlide(SlideRequest request);
     SlideResponse getSlide(UUID id);
+    void deleteSlide(UUID id);
 }
